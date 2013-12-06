@@ -84,7 +84,7 @@ JB :
   comments :
     provider : disqus
     disqus :
-      short_name : adaiguoguo
+      short_name : keepfoolish
     livefyre :
       site_id : 123
     intensedebate :
