@@ -5,6 +5,5 @@
 
 <http://keepfoolish.com>
 
- - Twitter: [@sanpingz](http://twitter.com/#!/sanpingz)
  - Facebook: [adaijiushiwo](https://www.facebook.com/#!/adaijiushiwo)
 
