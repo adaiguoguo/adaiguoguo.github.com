@@ -1,0 +1,63 @@
+{% if page.categories contains "footmark" %}
+
+<div id="sidebar" class="sidebar">
+  <h4>Footmark</h4>
+  <ul>
+    {% assign pages_list = site.categories.footmark %}  
+    {% include JB/pages_list %}
+  </ul>
+  
+</div>
+
+{% elsif page.categories contains "develop" %}
+
+<div id="sidebar" class="sidebar">
+  <h4>学习Jekyll</h4>
+  <ul>
+    {% assign pages_list = site.tags.jekyll %}
+    {% include custom/pages_list_reversed %}
+  </ul>
+
+</div>
+
+{% elsif page.categories contains "open" %}
+
+<div id="sidebar" class="sidebar">
+  <h4>开源项目</h4>
+  <ul>
+    {% assign pages_list = site.categories.open %}
+    {% include custom/pages_list_reversed %}
+  </ul>
+
+</div>
+
+{% elsif page.categories contains "scm" %}
+
+<div id="sidebar" class="sidebar">
+  <h4>配置管理</h4>
+  <ul>
+    {% assign pages_list = site.tags.git %}
+    {% include custom/pages_list_reversed %}
+  </ul>
+</div>
+{% elsif page.categories contains "coolskill" %}
+
+<div id="sidebar" class="sidebar">
+  <h4>酷炫技巧</h4>
+  <ul>
+    {% assign pages_list = site.categories.coolskill %}
+    {% include custom/pages_list_reversed %}
+  </ul>
+
+</div>
+{% elsif page.categories contains "sys" %}
+
+<div id="sidebar" class="sidebar">
+  <h4>酷炫技巧</h4>
+  <ul>
+    {% assign pages_list = site.categories.sys %}
+    {% include custom/pages_list_reversed %}
+  </ul>
+
+</div>
+{% endif %}
