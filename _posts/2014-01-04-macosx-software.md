@@ -1,8 +1,8 @@
 ---
 layout: post
 title: "如何把Mac OS X用的更炫-常用软件篇"
-category: 
-tags: [coolskill]
+category: coolskill
+tags: [Mac]
 description: |
   我一直不明白有一群人买了Mac然后把OS X卸了，换Windows系统。可能我唯一的理解就只有他们觉得Mac的软件不能满足日常需要，这篇我就介绍下Mac下的软件，相较Windows，已经有大举超过的趋势。
 ---

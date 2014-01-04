@@ -1,10 +1,10 @@
 ---
 layout: post
 title: "如何把Mac OS X用的更炫-顺畅操作篇"
-category: 
-tags: [coolskill]
+category: coolskill
+tags: [Mac]
 description: |
-  Mac OS X的常用快捷键、自带搜索神器 Spotlight 及自定义工作流 Alfred
+  Mac OS X的常用快捷键、自带搜索神器 Spotlight 及自定义工作流 Alfred。
   记住并使用这些技巧会明显提高操作，熟练掌握是需要成本的，需要一定的记忆。
   我就在这里介绍些常用的。
 ---
