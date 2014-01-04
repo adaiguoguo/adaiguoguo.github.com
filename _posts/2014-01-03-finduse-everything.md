@@ -5,12 +5,10 @@ category:
 tags: [coolskill]
 description: |
   Mac OS X的常用快捷键、自带搜索神器 Spotlight 及自定义工作流 Alfred
+  记住并使用这些技巧会明显提高操作，熟练掌握是需要成本的，需要一定的记忆。
+  我就在这里介绍些常用的。
 ---
 {% include JB/setup %}
-
-
-记住并使用快捷键会明显提高操作，熟练掌握快捷键是需要成本的，需要一定的记忆。
-我就在这里介绍些常用的。
 
 ## 通用快捷键
 Command+Table               从左到右的程序切换
@@ -76,4 +74,10 @@ sudo   mdutil   -i   on    #该 命令用来重建索引
 详细教程参见Weiphone 
 [键盘流——Alfred全攻略](http://bbs.weiphone.com/forum.php?mod=viewthread&tid=6398178)
 
-Alfred 本身是免费的；上面多数功能是需要powerpack的，入门价15欧，终身升级价30欧，也有所谓家庭装，自己按照需求选吧。有资金的话还请支持正版。
+常用的有呼出Alfred  
+
+输入sys回车就可以进系统设置
+
+输入lock回车锁屏
+
+Alfred 本身是免费的；但多数功能是需要powerpack的，入门价15欧，终身升级价30欧，也有所谓家庭装，自己按照需求选吧。有资金的话还请支持正版。
