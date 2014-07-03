@@ -21,7 +21,7 @@ tags: [git]
 
 * 这里提供给大家个更'cool'的安装方式使用请点击->[Chocolatey](http://chocolatey.org)
 
-* 一般的下载安装方式：[msysgit Git for Windows](http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git+)
+* 一般的下载安装方式：[msysgit Git for Windows](http://msysgit.github.io/)
 
 
 然后设置环境变量,右击计算机->属性->高级属性->高级->系统变量
