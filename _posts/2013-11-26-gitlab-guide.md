@@ -14,8 +14,6 @@ tags: [git]
 
 ![cardinal](/res/images/Gitlab_Guide/1.jpg)
 
-只要是在cn1的账户，在Gitlab的web界面http://git.dev.sh.ctripcorp.com，输入账号与密码登陆
-如果密码无法登录，请联系3333服务台查看下cn1账户是否被锁定了。
 
 ##安装最新版msysgit Git
 
