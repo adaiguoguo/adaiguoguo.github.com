@@ -3,7 +3,7 @@ layout: post
 title: "Docker kill issue"
 description: kill one docker task,but can't killed and the docker task can't be stop
 category: sys
-tags: [centos,docker,kernel]
+tags: [centos]
 ---
 {% include JB/setup %}
 
@@ -175,13 +175,15 @@ root@adca-mesos-20 ns]# addr2line -e /usr/lib/debug/lib/modules/3.10.0-229.el7.x
 [root@adca-mesos-20 ns]# addr2line -e /usr/lib/debug/lib/modules/3.10.0-229.el7.x86_64/vmlinux ffffffff810f1f88
 /usr/src/debug/kernel-3.10.0-229.el7/linux-3.10.0-229.el7.x86_64/kernel/pid_namespace.c:224 (discriminator 1)
 ...
- 220         /* Firstly reap the EXIT_ZOMBIE children we may have. */
  221         do {
  222                 clear_thread_flag(TIF_SIGPENDING);
  223                 rc = sys_wait4(-1, NULL, __WALL, NULL);
  224         } while (rc != -ECHILD);
 ...
 {% endhighlight %}
-sys_wait4 is the reason why hang.
+
+
+
+
 
 ---
