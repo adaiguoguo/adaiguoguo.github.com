@@ -3,7 +3,7 @@ layout: post
 title: "Docker kill issue"
 description: kill one docker task,but can't killed and the docker task can't be stop
 category: sys
-tags: [centos]
+tags: [centos,docker,kernel]
 ---
 {% include JB/setup %}
 
@@ -28,7 +28,6 @@ Server:
  Built:
  OS/Arch:      linux/amd64
  Experimental: true
-
 [root@adca-mesos-20 ns]# uname -r
 3.10.0-229.el7.x86_64
 {% endhighlight %}
@@ -49,7 +48,6 @@ That action hang and container can't be stopped.
             "Pid": 1489110,
             "PidMode": "",
             "PidsLimit": 0,
-
 [root@adca-mesos-20 ~]# ps -ef|grep 1489110
 root     1489110 1489091  0 Feb09 ?        00:00:00 [start.sh]
 root     1489145 1489110  0 Feb09 ?        00:00:25 [java] <defunct>
@@ -62,7 +60,9 @@ Now we get the process parent PID 1489091
 [root@adca-mesos-20 ns]# ps -ef|grep 1489091
 root     1489091    2471  0 Feb09 ?        00:00:00 docker-containerd-shim 2d73d951f0f765b2e32997ca9f801bc6a0278df48f75227782a00d378a021601 /var/run/docker/libcontainerd/2d73d951f0f765b2e32997ca9f801bc6a0278df48f75227782a00d378a021601 docker-runc
 root     1489110 1489091  0 Feb09 ?        00:00:00 [start.sh]
+{% endhighlight %}
 
+{% highlight html %}
 [root@adca-mesos-20 ns]# strace -f -p 1489091
 Process 1489091 attached with 10 threads
 [pid 1489142] futex(0xc8200c6508, FUTEX_WAIT, 0, NULL <unfinished ...>
@@ -75,7 +75,9 @@ Process 1489091 attached with 10 threads
 [pid 1489095] futex(0x8657c0, FUTEX_WAIT, 0, NULL <unfinished ...>
 [pid 1489094] restart_syscall(<... resuming interrupted call ...> <unfinished ...>
 [pid 1489091] futex(0x84b788, FUTEX_WAIT, 0, NULL
+{% endhighlight %}
 
+{% highlight html %}
 [root@adca-mesos-20 ns]# lsof -p 1489091
 COMMAND       PID USER   FD      TYPE DEVICE SIZE/OFF     NODE NAME
 docker-co 1489091 root  cwd       DIR   0,18      160 56026342 /run/docker/libcontainerd/containerd/2d73d951f0f765b2e32997ca9f801bc6a0278df48f75227782a00d378a021601/init
@@ -121,7 +123,9 @@ lrwxrwxrwx 1 root root 0 Feb  9 17:12 mnt
 lrwxrwxrwx 1 root root 0 Feb  9 00:54 net
 lrwxrwxrwx 1 root root 0 Feb  9 17:12 pid -> pid:[4026532278]
 lrwxrwxrwx 1 root root 0 Feb  9 17:12 uts
+{% endhighlight %}
 
+{% highlight html %}
 [root@adca-mesos-20 ns]# cat /proc/1489110/stack
 [<ffffffff81074033>] do_wait+0x203/0x260
 [<ffffffff81075150>] SyS_wait4+0x80/0x110
@@ -134,14 +138,16 @@ lrwxrwxrwx 1 root root 0 Feb  9 17:12 uts
 [<ffffffff81614cdd>] int_signal+0x12/0x17
 [<ffffffffffffffff>] 0xffffffffffffffff
 {% endhighlight %}
-[<ffffffff810f1f88>] zap_pid_ns_processes+0x118/0x210 is the root cause.
+zap_pid_ns_processes+0x118/0x210 is the root cause.
 
 ## How to find the code in kernel?
 * 1：Install kernel-debuginfo
 {% highlight html %}
 [root@adca-mesos-20 ns]# wget http://debuginfo.centos.org/7/x86_64/kernel-debuginfo-3.10.0-229.el7.x86_64.rpm
 [root@adca-mesos-20 ns]# wget http://debuginfo.centos.org/7/x86_64/kernel-debuginfo-common-x86_64-3.10.0-229.el7.x86_64.rpm
+{% endhighlight %}
 
+{% highlight html %}
 [root@adca-mesos-20 ns]# rpm -hiv kernel-debuginfo-common-x86_64-3.10.0-229.el7.x86_64.rpm
 [root@adca-mesos-20 ns]# rpm -hiv kernel-debuginfo-3.10.0-229.el7.x86_64.rpm
 {% endhighlight %}
@@ -155,7 +161,7 @@ lrwxrwxrwx 1 root root 0 Feb  9 17:12 uts
 {% endhighlight %}
 
 * 3：Find the code from stack
-[{% highlight html %}
+{% highlight html %}
 root@adca-mesos-20 ns]# addr2line -e /usr/lib/debug/lib/modules/3.10.0-229.el7.x86_64/vmlinux ffffffff81074dc9
 /usr/src/debug/kernel-3.10.0-229.el7/linux-3.10.0-229.el7.x86_64/kernel/exit.c:539
 ...
@@ -172,6 +178,9 @@ root@adca-mesos-20 ns]# addr2line -e /usr/lib/debug/lib/modules/3.10.0-229.el7.x
  540         }
 ...
 
+{% endhighlight %}
+
+{% highlight html %}
 [root@adca-mesos-20 ns]# addr2line -e /usr/lib/debug/lib/modules/3.10.0-229.el7.x86_64/vmlinux ffffffff810f1f88
 /usr/src/debug/kernel-3.10.0-229.el7/linux-3.10.0-229.el7.x86_64/kernel/pid_namespace.c:224 (discriminator 1)
 ...
@@ -181,6 +190,7 @@ root@adca-mesos-20 ns]# addr2line -e /usr/lib/debug/lib/modules/3.10.0-229.el7.x
  224         } while (rc != -ECHILD);
 ...
 {% endhighlight %}
+sys_wait4 is the result why hang.
 
 
 

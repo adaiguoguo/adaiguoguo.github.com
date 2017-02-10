@@ -1,6 +1,6 @@
 ---
 layout: splash
-title: "Devops"
+title: "Dev"
 ---
 {% include JB/setup %}
 

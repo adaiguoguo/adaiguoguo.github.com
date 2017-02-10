@@ -15,8 +15,8 @@ topbar:
     url : '/coolskill/index.html'
     title : 'Geektrip'
   -
-    url : '/Devops/index.html'
-    title : 'Devops'
+    url : '/dev/index.html'
+    title : 'Dev'
   -
     url : '/scm/index.html'
     title : 'SCM'
