@@ -19,7 +19,6 @@ Client:
  Built:
  OS/Arch:      linux/amd64
  Experimental: true
-
 Server:
  Version:      1.12.0-dev
  API version:  1.25
@@ -31,7 +30,6 @@ Server:
 [root@adca-mesos-20 ns]# uname -r
 3.10.0-229.el7.x86_64
 {% endhighlight %}
-Centos7.1
 
 ## What is the bug behavior?
 
