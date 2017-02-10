@@ -12,7 +12,7 @@ title: "Devops"
 </ul>
 
 
-## 2 - Openstack
+## 2 - Kernel
 
 <ul class="thumbnails">
   {% assign pages_icons = site.categories.Openstack %}
