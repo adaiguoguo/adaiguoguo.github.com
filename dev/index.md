@@ -15,7 +15,7 @@ title: "Dev"
 ## 2 - Kernel
 
 <ul class="thumbnails">
-  {% assign pages_icons = site.categories.Openstack %}
+  {% assign pages_icons = site.categories.kernel %}
   {% include custom/pages_reversed %}
 </ul>
 

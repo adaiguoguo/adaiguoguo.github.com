@@ -2,7 +2,7 @@
 layout: post
 title: "Docker kill issue"
 description: kill one docker task,but can't killed and the docker task can't be stop
-category: sys
+category: kernel
 tags: [centos,docker,kernel]
 ---
 {% include JB/setup %}
