@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Docker ps hang issue"
-description: kill one docker task,but can't killed and the docker task can't be stop
+description: can't use docker ps and other docker [commad] is ok
 category: docker
 tags: [centos,docker]
 ---
@@ -18,7 +18,6 @@ Client:
  Git commit:   092cba3
  Built:        Wed Feb  8 06:38:28 2017
  OS/Arch:      linux/amd64
-
 Server:
  Version:      1.13.1
  API version:  1.26 (minimum version 1.12)
@@ -85,4 +84,5 @@ The container process 7294 is disappeared.
 
 ## So I guess?
 The container received a SIGKILL by Mesos.But for some reason, the exit operate was crashed.Then we docker ps,that operate will get info from container.But the container process is not found.
+
 ---
