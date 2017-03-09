@@ -19,3 +19,9 @@ title: "Dev"
   {% include custom/pages_reversed %}
 </ul>
 
+## 3 - Docker
+
+<ul class="thumbnails">
+  {% assign pages_icons = site.categories.docker %}
+  {% include custom/pages_reversed %}
+</ul>
